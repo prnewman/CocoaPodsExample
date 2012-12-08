@@ -18,6 +18,9 @@
 		0A53CEFB16739E3C008D70B8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A53CEFA16739E3C008D70B8 /* Default-568h@2x.png */; };
 		0A53CEFE16739E3C008D70B8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A53CEFC16739E3C008D70B8 /* MainStoryboard.storyboard */; };
 		0A53CF0116739E3C008D70B8 /* NZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A53CF0016739E3C008D70B8 /* NZViewController.m */; };
+		0A53CF091673B4C2008D70B8 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A53CF081673B4C2008D70B8 /* placeholder.png */; };
+		0AAEA9D61673BAB800210628 /* NZTraktAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAEA9D51673BAB800210628 /* NZTraktAPIClient.m */; };
+		E8078F0CF66347F7AADC6FF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3086444B25FD4C8D8D024E40 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,11 @@
 		0A53CEFD16739E3C008D70B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		0A53CEFF16739E3C008D70B8 /* NZViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NZViewController.h; sourceTree = "<group>"; };
 		0A53CF0016739E3C008D70B8 /* NZViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NZViewController.m; sourceTree = "<group>"; };
+		0A53CF081673B4C2008D70B8 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		0AAEA9D41673BAB800210628 /* NZTraktAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZTraktAPIClient.h; sourceTree = "<group>"; };
+		0AAEA9D51673BAB800210628 /* NZTraktAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZTraktAPIClient.m; sourceTree = "<group>"; };
+		3086444B25FD4C8D8D024E40 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6815DF0213E248E1BF2F0C51 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 				0A53CEE516739E3C008D70B8 /* UIKit.framework in Frameworks */,
 				0A53CEE716739E3C008D70B8 /* Foundation.framework in Frameworks */,
 				0A53CEE916739E3C008D70B8 /* CoreGraphics.framework in Frameworks */,
+				E8078F0CF66347F7AADC6FF9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +68,7 @@
 				0A53CEEA16739E3C008D70B8 /* CocoaPodsExample */,
 				0A53CEE316739E3C008D70B8 /* Frameworks */,
 				0A53CEE116739E3C008D70B8 /* Products */,
+				6815DF0213E248E1BF2F0C51 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +86,7 @@
 				0A53CEE416739E3C008D70B8 /* UIKit.framework */,
 				0A53CEE616739E3C008D70B8 /* Foundation.framework */,
 				0A53CEE816739E3C008D70B8 /* CoreGraphics.framework */,
+				3086444B25FD4C8D8D024E40 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -83,9 +94,12 @@
 		0A53CEEA16739E3C008D70B8 /* CocoaPodsExample */ = {
 			isa = PBXGroup;
 			children = (
+				0A53CF071673B4C2008D70B8 /* images */,
 				0A53CEF316739E3C008D70B8 /* NZAppDelegate.h */,
 				0A53CEF416739E3C008D70B8 /* NZAppDelegate.m */,
 				0A53CEFC16739E3C008D70B8 /* MainStoryboard.storyboard */,
+				0AAEA9D41673BAB800210628 /* NZTraktAPIClient.h */,
+				0AAEA9D51673BAB800210628 /* NZTraktAPIClient.m */,
 				0A53CEFF16739E3C008D70B8 /* NZViewController.h */,
 				0A53CF0016739E3C008D70B8 /* NZViewController.m */,
 				0A53CEEB16739E3C008D70B8 /* Supporting Files */,
@@ -107,6 +121,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0A53CF071673B4C2008D70B8 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				0A53CF081673B4C2008D70B8 /* placeholder.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -117,6 +139,7 @@
 				0A53CEDC16739E3C008D70B8 /* Sources */,
 				0A53CEDD16739E3C008D70B8 /* Frameworks */,
 				0A53CEDE16739E3C008D70B8 /* Resources */,
+				DA48C7D6546148B78B64D677 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,10 +187,28 @@
 				0A53CEF916739E3C008D70B8 /* Default@2x.png in Resources */,
 				0A53CEFB16739E3C008D70B8 /* Default-568h@2x.png in Resources */,
 				0A53CEFE16739E3C008D70B8 /* MainStoryboard.storyboard in Resources */,
+				0A53CF091673B4C2008D70B8 /* placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DA48C7D6546148B78B64D677 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0A53CEDC16739E3C008D70B8 /* Sources */ = {
@@ -177,6 +218,7 @@
 				0A53CEF116739E3C008D70B8 /* main.m in Sources */,
 				0A53CEF516739E3C008D70B8 /* NZAppDelegate.m in Sources */,
 				0A53CF0116739E3C008D70B8 /* NZViewController.m in Sources */,
+				0AAEA9D61673BAB800210628 /* NZTraktAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +296,7 @@
 		};
 		0A53CF0516739E3C008D70B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6815DF0213E248E1BF2F0C51 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CocoaPodsExample/CocoaPodsExample-Prefix.pch";
@@ -265,6 +308,7 @@
 		};
 		0A53CF0616739E3C008D70B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6815DF0213E248E1BF2F0C51 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CocoaPodsExample/CocoaPodsExample-Prefix.pch";
@@ -293,6 +337,7 @@
 				0A53CF0616739E3C008D70B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,11 +7,14 @@
 //
 
 #import "NZAppDelegate.h"
+#import <AFNetworking.h>
 
 @implementation NZAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+
     // Override point for customization after application launch.
     return YES;
 }
