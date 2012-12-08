@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <NIAttributedLabel.h>
 
-@interface NZViewController : UIViewController
+@interface NZViewController : UIViewController<UIScrollViewDelegate, NIAttributedLabelDelegate>
 
 @end

@@ -127,13 +127,22 @@
         NSDictionary *episodeDict = [show $for:@"episode"];
         NSDictionary *showDict = [show $for:@"show"];
         // 6 - Display the show information
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(index * showScrollView.bounds.size.width, 40, showScrollView.bounds.size.width, 40)];
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(index * showScrollView.bounds.size.width, 40, showScrollView.bounds.size.width, 40)];
+//        label.text = [showDict $for: @"title"];
+//        label.backgroundColor = [UIColor clearColor];
+//        label.font = [UIFont systemFontOfSize:18];
+//        label.textAlignment = NSTextAlignmentCenter;
+//        [showScrollView addSubview:label];
+        // 6 - Display the show information
+        NIAttributedLabel* label = [[NIAttributedLabel alloc] initWithFrame:CGRectMake(index * showScrollView.bounds.size.width, 40, showScrollView.bounds.size.width, 40)];
         label.text = [showDict $for: @"title"];
         label.backgroundColor = [UIColor clearColor];
+        label.linkColor = [UIColor redColor];
         label.font = [UIFont systemFontOfSize:18];
         label.textAlignment = NSTextAlignmentCenter;
+        [label addLink: [NSURL URLWithString:[showDict $for: @"url"]] range:NSMakeRange(0, label.text.length)];
+        label.delegate = self;
         [showScrollView addSubview:label];
-        
         
         // 6.1 - Create formatted airing date
         static NSDateFormatter *formatter = nil;
@@ -202,6 +211,12 @@
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     pageControlUsed = NO;
+}
+
+#pragma mark - NIAttributedLabelDelegate method
+
+-(void) attributedLabel:(NIAttributedLabel *)attributedLabel didSelectLink:(NSURL *)url atPoint:(CGPoint)point {
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 @end
