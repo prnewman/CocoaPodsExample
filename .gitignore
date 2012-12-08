@@ -19,7 +19,7 @@ build/*
 !default.xcworkspace
 xcuserdata
 profile
-*.xcuserstate
+UserInterfaceState.xcuserstate
 *.moved-aside
 *~.nib
 
