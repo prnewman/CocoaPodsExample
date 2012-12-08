@@ -1,7 +1,7 @@
-PODS_PUBLIC_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/ConciseKit" "${PODS_ROOT}/Headers/SSToolkit"
-HEADER_SEARCH_PATHS = ${PODS_HEADERS_SEARCH_PATHS}
-ALWAYS_SEARCH_USER_PATHS = YES
-PODS_BUILD_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/AFNetworking" "${PODS_ROOT}/BuildHeaders/ConciseKit" "${PODS_ROOT}/BuildHeaders/SSToolkit"
-PODS_ROOT = ${SRCROOT}/Pods
+PODS_BUILD_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/AFNetworking" "${PODS_ROOT}/BuildHeaders/ConciseKit" "${PODS_ROOT}/BuildHeaders/Nimbus" "${PODS_ROOT}/BuildHeaders/SSToolkit"
 PODS_HEADERS_SEARCH_PATHS = ${PODS_PUBLIC_HEADERS_SEARCH_PATHS}
-OTHER_LDFLAGS = -ObjC -framework CoreGraphics -framework Foundation -framework MobileCoreServices -framework QuartzCore -framework SystemConfiguration
+ALWAYS_SEARCH_USER_PATHS = YES
+PODS_PUBLIC_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/ConciseKit" "${PODS_ROOT}/Headers/Nimbus" "${PODS_ROOT}/Headers/SSToolkit"
+PODS_ROOT = ${SRCROOT}/Pods
+HEADER_SEARCH_PATHS = ${PODS_HEADERS_SEARCH_PATHS}
+OTHER_LDFLAGS = -ObjC -framework CoreGraphics -framework CoreText -framework Foundation -framework MobileCoreServices -framework QuartzCore -framework SystemConfiguration
