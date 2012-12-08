@@ -5,6 +5,7 @@
 *.tm_build_errors
 
 # Xcode noise, after https://github.com/github/gitignore/blob/master/Objective-C.gitignore
+# http://stackoverflow.com/questions/49478/git-ignore-file-for-xcode-projects
 build/*
 *.pbxuser
 !default.pbxuser
@@ -18,6 +19,7 @@ build/*
 !default.xcworkspace
 xcuserdata
 profile
+*.xcuserstate
 *.moved-aside
 *~.nib
 
