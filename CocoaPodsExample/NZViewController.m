@@ -87,7 +87,23 @@
     [self loadShow:0];
 }
 
-- (IBAction)pageChanged:(id)sender {
+-(IBAction)pageChanged:(id)sender {
+    // Set flag
+    pageControlUsed = YES;
+    // Get previous page number
+    int page = showPageControl.currentPage;
+    previousPage = page;
+    // Call loadShow for the new page
+    [self loadShow:page];
+    // Scroll scroll view to new page
+    CGRect frame = showScrollView.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0;
+    [UIView animateWithDuration:.5 animations:^{
+        [showScrollView scrollRectToVisible:frame animated:NO];
+    } completion:^(BOOL finished) {
+        pageControlUsed = NO;
+    }];
 }
 
 -(void)loadShow:(int)index {
@@ -108,7 +124,7 @@
             shows += count;
         }
         // 5 - Load the show information
-        //NSDictionary *episodeDict = [show $for:@"episode"];
+        NSDictionary *episodeDict = [show $for:@"episode"];
         NSDictionary *showDict = [show $for:@"show"];
         // 6 - Display the show information
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(index * showScrollView.bounds.size.width, 40, showScrollView.bounds.size.width, 40)];
@@ -117,8 +133,75 @@
         label.font = [UIFont systemFontOfSize:18];
         label.textAlignment = NSTextAlignmentCenter;
         [showScrollView addSubview:label];
+        
+        
+        // 6.1 - Create formatted airing date
+        static NSDateFormatter *formatter = nil;
+        if (!formatter) {
+            formatter = $new(NSDateFormatter);
+            formatter.dateStyle = NSDateFormatterLongStyle;
+            formatter.timeStyle = NSDateFormatterShortStyle;
+            formatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
+        }
+        NSTimeInterval showAired = [[episodeDict $for: @"first_aired_localized"] doubleValue];
+        NSString *showDate = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970: showAired]];
+        // 6.2 - Create label to display episode info
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(index * showScrollView.bounds.size.width, 360, showScrollView.bounds.size.width, 40)];
+        NSString* episode  = [NSString stringWithFormat:@"%02dx%02d - \"%@\"",
+                              [[episodeDict valueForKey:@"season"] intValue],
+                              [[episodeDict valueForKey:@"number"] intValue],
+                              [episodeDict objectForKey:@"title"]];
+        lbl.text = [NSString stringWithFormat:@"%@\n%@", episode, showDate];
+        lbl.numberOfLines = 0;
+        lbl.textAlignment = NSTextAlignmentCenter;
+        lbl.textColor = [UIColor whiteColor];
+        lbl.backgroundColor = [UIColor clearColor];
+        [showScrollView addSubview:lbl];
+        
+        
+        
+        // 6.3 - Get image
+        NSString *posterUrl = [[showDict $for: @"images"] $for: @"poster"];
+        if ([[UIScreen mainScreen] isRetinaDisplay]) {
+            posterUrl = [posterUrl stringByReplacingOccurrencesOfString:@".jpg" withString:@"-300.jpg"];
+        } else {
+            posterUrl = [posterUrl stringByReplacingOccurrencesOfString:@".jpg" withString:@"-138.jpg"];
+        }
+        // 6.4 - Display image using image view
+        UIImageView *posterImage = $new(UIImageView);
+        // $new(class) is the same as [[class alloc] init] - courtesy of ConciseKit
+        posterImage.frame = CGRectMake(index * showScrollView.bounds.size.width + 90, 80, 150, 225);
+        [showScrollView addSubview:posterImage];
+        // 6.5 - Asynchronously load the image
+        [posterImage setImageWithURL:[NSURL URLWithString:posterUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        
         // 7 - Add the new page to the loadedPages array
         [loadedPages addObject:$int(index)];
     }
 }
+
+#pragma mark - UIScrollView delegate methods
+
+-(void)scrollViewDidScroll:(UIScrollView *)sender {
+    // Was the scrolling initiated via page control?
+    if (pageControlUsed) {
+        return;
+    }
+    // Figure out page to scroll to
+    CGFloat pageWidth = sender.frame.size.width;
+    int page = floor((sender.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    // Do not do anything if we're trying to go beyond the available page range
+    if (page == previousPage || page < 0 || page >= showPageControl.numberOfPages)
+        return;
+    previousPage = page;
+    // Set the page control page display
+    showPageControl.currentPage = page;
+    // Load the page
+    [self loadShow:page];
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    pageControlUsed = NO;
+}
+
 @end

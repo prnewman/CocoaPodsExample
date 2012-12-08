@@ -13,28 +13,22 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orl-vZ-pnY">
-                                <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="sDu-xr-jDf">
-                                        <connections>
-                                            <action selector="pageChanged:" destination="2" eventType="valueChanged" id="wKc-t6-aI7"/>
-                                        </connections>
-                                    </pageControl>
-                                </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="sDu-xr-jDf" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="BT8-db-aUD"/>
-                                    <constraint firstAttribute="trailing" secondItem="sDu-xr-jDf" secondAttribute="trailing" constant="141" id="nEm-ws-Y4M"/>
-                                    <constraint firstItem="sDu-xr-jDf" firstAttribute="top" secondItem="Orl-vZ-pnY" secondAttribute="top" constant="492" id="p9I-aP-hbc"/>
-                                    <constraint firstAttribute="centerX" secondItem="sDu-xr-jDf" secondAttribute="centerX" type="user" id="q9P-KP-77x"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="2" id="rv1-Vj-tLY"/>
                                 </connections>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="sDu-xr-jDf">
+                                <connections>
+                                    <action selector="pageChanged:" destination="2" eventType="valueChanged" id="wKc-t6-aI7"/>
+                                </connections>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="sDu-xr-jDf" secondAttribute="bottom" constant="82" id="RNZ-Pw-E04"/>
                             <constraint firstItem="Orl-vZ-pnY" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="UnE-ng-D6B"/>
+                            <constraint firstItem="sDu-xr-jDf" firstAttribute="centerX" secondItem="Orl-vZ-pnY" secondAttribute="centerX" type="default" id="e5F-0d-Jrr"/>
                             <constraint firstItem="Orl-vZ-pnY" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="kFc-oS-ifi"/>
                             <constraint firstItem="Orl-vZ-pnY" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="sTU-tf-Hb4"/>
                             <constraint firstItem="Orl-vZ-pnY" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="uWn-wX-1Cu"/>
@@ -56,6 +50,7 @@
         <class className="NZViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NZViewController.h"/>
             <relationships>
+                <relationship kind="action" name="pageChanged:"/>
                 <relationship kind="outlet" name="showPageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="showScrollView" candidateClass="UIScrollView"/>
             </relationships>
